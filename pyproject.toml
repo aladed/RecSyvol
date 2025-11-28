@@ -1,0 +1,66 @@
+[tool.poetry]
+name = "recsyvol"
+version = "0.1.0"
+description = "Generative RecSys Lab — encoder-decoder on T-ECD"
+authors = ["Sivolapov <vlad.sivolapov@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10,<3.11"
+
+# --- CORE ML ---
+torch = { version = "2.3.1+cu121", source = "pytorch" }
+torchvision = { version = "0.18.1+cu121", source = "pytorch" }
+torchaudio = { version = "2.3.1+cu121", source = "pytorch" }
+
+transformers = "4.40.2"
+sentence-transformers = "2.7.0"
+scikit-learn = "1.5.0"
+numpy = "1.26.4"
+polars = {extras = ["parquet"], version = "^1.35.2"}
+pyarrow = "15.0.2"
+
+onnxruntime-gpu = "1.18.0"
+
+# --- SERVER ---
+fastapi = "0.111.0"
+uvicorn = "0.29.0"
+
+# --- GRPC ---
+grpcio = "1.59.3"
+grpcio-tools = "1.59.3"
+
+# --- LOGGING / MONITORING ---
+structlog = "24.1.0"
+rich = "13.7.1"
+mlflow = "2.13.1"
+evidently = "0.4.26"
+
+# --- CONFIG ---
+python-dotenv = "1.0.1"
+pydantic-settings = "2.2.1"
+
+# --- FREQUENT UTILS ---
+httpx = "0.27.0"
+huggingface-hub = "<1.0"
+tqdm = "^4.67.1"
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "8.2.0"
+pytest-asyncio = "0.23.6"
+ruff = "0.4.5"
+black = "24.4.2"
+mypy = "1.10.0"
+types-requests = "*"
+types-PyYAML = "*"
+pre-commit = "3.7.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
